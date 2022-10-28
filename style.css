@@ -1,0 +1,43 @@
+body{
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+}
+/*---------Main---------*/
+main{
+  flex: 1 1 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+main .base{
+  background-color: black;
+  height: 550px;
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+}
+
+main .base .screens .screen{
+  border: 1px solid black;
+  width: 330px;
+  height: 40px;
+  background-color: white;
+}
+main .base .keyboard{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+main .base .keyboard button{
+  width: 70px;
+  height: 60px;
+}
+
+
