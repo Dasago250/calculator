@@ -16,6 +16,9 @@ function division(numberA, numberB) {
   }
   return numberA / numberB;
 }
+function MOD(numberA, numberB) {
+  return numberA % numberB;
+}
 
 function operate(numberA, numberB, operation) {
   switch (operation) {
@@ -27,13 +30,15 @@ function operate(numberA, numberB, operation) {
       return multiplication(numberA,numberB);
     case "division":
       return division(numberA,numberB);
+    case "MOD":
+      return MOD(numberA,numberB);
   }
 }
 
 const keyboard = document.querySelectorAll('.key');
 const screen1 = document.querySelector('.screen1');
 const screen2 = document.querySelector('.screen2');
-
+screen1.textContent = "0";
 let numberA = 0;
 let numberB = 0;
 let currentOperation = "";
@@ -42,6 +47,7 @@ keyboard.forEach(key => {
   key.addEventListener('click', () => {
     switch (key.value) {
       case "number":
+        screen1.textContent = ""
         screen1.textContent += key.getAttribute('id');
         break;
       case "operation":
