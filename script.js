@@ -29,3 +29,19 @@ function operate(numberA, numberB, operation) {
       return division(numberA,numberB);
   }
 }
+
+const keyboard = document.querySelectorAll('.key');
+const screen1 = document.querySelector('.screen1');
+const screen2 = document.querySelector('.screen2');
+
+keyboard.forEach(key => {
+  key.addEventListener('click', () => {
+    switch (key.value) {
+      case "number":
+        screen1.textContent += key.getAttribute('id');
+        break;
+      default:
+        break;
+    }
+  })
+})
