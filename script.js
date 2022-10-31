@@ -1,42 +1,3 @@
-//function of each operation
-function add(numberA, numberB) {
-  return numberA + numberB;
-}
-
-function subtraction(numberA, numberB) {
-  return numberA - numberB;
-}
-
-function multiplication(numberA, numberB) {
-  return numberA * numberB;
-}
-
-function division(numberA, numberB) {
-  if (numberB == 0) {
-    return "ERROR Can't divide by zero";
-  }
-  return numberA / numberB;
-}
-function MOD(numberA, numberB) {
-  return numberA % numberB;
-}
-
-//Operations
-function operate(numberA, numberB, operation) {
-  switch (operation) {
-    case "addition":
-      return add(numberA,numberB);
-    case "subtraction":
-      return subtraction(numberA,numberB);
-    case "multiplication":
-      return multiplication(numberA,numberB);
-    case "division":
-      return division(numberA,numberB);
-    case "MOD":
-      return MOD(numberA,numberB);
-  }
-}
-
 //buttons and screens to display the numbers and calculations
 const keyboard = document.querySelectorAll('.key');
 const screen1 = document.querySelector('.screen1');
@@ -61,11 +22,55 @@ keyboard.forEach(key => {
       case "delete":
         Clear(key.getAttribute('id'));
         break;
+      case "extra":
+        pointSign(key.getAttribute('id'));
+        break;
       default:
         break;
     }
   })
 })
+
+//function of each operation
+function add(numberA, numberB) {
+  return numberA + numberB;
+}
+
+function subtraction(numberA, numberB) {
+  return numberA - numberB;
+}
+
+function multiplication(numberA, numberB) {
+  return numberA * numberB;
+}
+
+function division(numberA, numberB) {
+  if (numberB == 0) {
+    alert("ERROR you can't divide by zero")
+    return 0;
+  }
+  return numberA / numberB;
+}
+function MOD(numberA, numberB) {
+  return numberA % numberB;
+}
+
+//Operations
+function operate(numberA, numberB, operation) {
+  switch (operation) {
+    case "addition":
+      return add(numberA,numberB);
+    case "subtraction":
+      return subtraction(numberA,numberB);
+    case "multiplication":
+      return multiplication(numberA,numberB);
+    case "division":
+      return division(numberA,numberB);
+    case "MOD":
+      return MOD(numberA,numberB);
+  }
+}
+
 
 // Check if an operation was already done
 function operationManager(operation) {
@@ -117,5 +122,22 @@ function Clear(key){
     currentOperation = "";
     numberA = 0;
     numberB = 0;
+  }
+}
+
+function pointSign(key){
+  if (key == "point") {
+    let number = screen1.textContent;
+    if (!number.includes('.')) {
+      screen1.textContent += '.'
+    }
+  }
+  if (key == "sign") {
+    let number = screen1.textContent;
+    if (!number.includes('-') && screen1.textContent != "") {
+      screen1.textContent = "-".concat(number)
+    }else if(number.includes('-')){
+      screen1.textContent = number.slice(1 , number.length);
+    }
   }
 }
