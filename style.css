@@ -14,10 +14,17 @@ body{
   margin: 0;
   display: flex;
   flex-direction: column;
-  align-items: center;
   height: 100vh;
   background-color: #EFE6DD;
   font-family: "Roboto", sans-serif;
+}
+/*---------Header-------*/
+header{
+  background-color: #231F20;
+  align-self: stretch;
+  text-align: center;
+  color: #F3DFA2;
+  font-size: 20px;
 }
 /*---------Main---------*/
 main{
@@ -78,4 +85,17 @@ main .base .keyboard [value~="operation"]{
 main .base .keyboard [value~="extra"],
 main .base .keyboard [value~="equal"]{
   background-color: #B3A394;
+}
+
+/*---------Footer--------*/
+footer{
+  background-color: #231F20;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+footer p a{
+  text-decoration: none;
+  font-size: 18px;
+  color: #F3DFA2;
 }
