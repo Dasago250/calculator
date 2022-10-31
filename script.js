@@ -53,10 +53,13 @@ keyboard.forEach(key => {
         screen1.textContent += key.getAttribute('id');
         break;
       case "operation":
-        operationManager(key.getAttribute('id'))
+        operationManager(key.getAttribute('id'));
         break;
       case "equal":
         equal();
+        break;
+      case "delete":
+        Clear(key.getAttribute('id'));
         break;
       default:
         break;
@@ -85,6 +88,7 @@ function operationManager(operation) {
 
 //check if theres 2 numbers in screens and realize the current select operation.
 function equal() {
+  let result;
   if (screen2.textContent != "" && currentOperation != "") {
     numberB = +screen1.textContent;
     result = operate(numberA,numberB,currentOperation)
@@ -102,4 +106,16 @@ function checkPoint(number){
     return number.toFixed(2);
   }
   return number;
+}
+
+function Clear(key){
+  if (key == "CE") {
+    screen1.textContent = ""
+  }else{
+    screen1.textContent = ""
+    screen2.textContent = ""
+    currentOperation = "";
+    numberA = 0;
+    numberB = 0;
+  }
 }
