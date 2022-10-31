@@ -1,9 +1,23 @@
+@font-face {
+  font-family: "Roboto";
+  src: url(./Fonts/Roboto-Regular.ttf);
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Teko";
+  src: url(./Fonts/Teko-Light.ttf);
+  font-weight: normal;
+  font-style: normal;
+}
 body{
   margin: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   height: 100vh;
+  background-color: #EFE6DD;
+  font-family: "Roboto", sans-serif;
 }
 /*---------Main---------*/
 main{
@@ -14,7 +28,7 @@ main{
 }
 
 main .base{
-  background-color: black;
+  background-color: #102542;
   height: 550px;
   width: 400px;
   display: flex;
@@ -22,22 +36,46 @@ main .base{
   align-items: center;
   justify-content: center;
   gap: 30px;
+  border-radius: 20px;
 }
-
+main .base .screens{
+  border-radius: 5px;
+  background-color:#FFFFFF ;
+}
 main .base .screens .screen{
-  border: 1px solid black;
   width: 330px;
   height: 40px;
-  background-color: white;
+  font-family: "Teko" ,sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  font-size: 40px;
+  padding: 5px;
 }
 main .base .keyboard{
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
+  gap: 15px;
 }
 main .base .keyboard button{
+  background-color: #CDD7D6;
   width: 70px;
   height: 60px;
+  font-size: 20px;
+  border-radius: 5px;
+}
+main .base .keyboard button:hover{
+  opacity: 0.7;
+}
+main .base .keyboard [value~="delete"]{
+  background-color: #F87060;
 }
 
+main .base .keyboard [value~="operation"]{
+  background-color: #F3DFA2;
+}
 
+main .base .keyboard [value~="extra"],
+main .base .keyboard [value~="equal"]{
+  background-color: #B3A394;
+}
