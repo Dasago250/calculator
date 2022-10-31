@@ -1,3 +1,4 @@
+//function of each operation
 function add(numberA, numberB) {
   return numberA + numberB;
 }
@@ -20,6 +21,7 @@ function MOD(numberA, numberB) {
   return numberA % numberB;
 }
 
+//Operations
 function operate(numberA, numberB, operation) {
   switch (operation) {
     case "addition":
@@ -35,19 +37,19 @@ function operate(numberA, numberB, operation) {
   }
 }
 
+//buttons and screens to display the numbers and calculations
 const keyboard = document.querySelectorAll('.key');
 const screen1 = document.querySelector('.screen1');
 const screen2 = document.querySelector('.screen2');
-screen1.textContent = "0";
 let numberA = 0;
 let numberB = 0;
 let currentOperation = "";
 
+//Each button event
 keyboard.forEach(key => {
   key.addEventListener('click', () => {
     switch (key.value) {
       case "number":
-        screen1.textContent = ""
         screen1.textContent += key.getAttribute('id');
         break;
       case "operation":
@@ -62,6 +64,7 @@ keyboard.forEach(key => {
   })
 })
 
+// Check if an operation was already done
 function operationManager(operation) {
   let result;
   if(screen2.textContent == ""){
@@ -72,21 +75,31 @@ function operationManager(operation) {
   }else{
     numberB = +screen1.textContent;
     result = operate(numberA,numberB,currentOperation)
-    screen2.textContent = result;
-    screen1.textContent = ""
     currentOperation = operation;
+    screen2.textContent = checkPoint(result);
+    screen1.textContent = ""
     numberA = result;
     numberB = 0;
   }
 }
 
+//check if theres 2 numbers in screens and realize the current select operation.
 function equal() {
   if (screen2.textContent != "" && currentOperation != "") {
     numberB = +screen1.textContent;
     result = operate(numberA,numberB,currentOperation)
-    screen2.textContent = result;
+    currentOperation = "";
+    screen2.textContent = checkPoint(result);
     screen1.textContent = ""
     numberA = result;
     numberB = 0
   }
+}
+
+function checkPoint(number){
+  let text = number.toString();
+  if (text.includes('.')) {
+    return number.toFixed(2);
+  }
+  return number;
 }
